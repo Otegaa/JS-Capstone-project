@@ -1,4 +1,4 @@
-import { movieCounter } from "../movieCounter.js";
+import { movieCounter } from '../movieCounter.js';
 
 test('movieCounter function should count and display the number of movies correctly', () => {
   // Create a fake DOM with a counter element
