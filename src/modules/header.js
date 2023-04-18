@@ -1,7 +1,7 @@
 // import logo from '../assets/logo.png'
 
 const header = () => {
-  const nav = document.querySelector('.desktop-nav')
+  const nav = document.querySelector('.desktop-nav');
   nav.innerHTML = `
   <ul class="menu">
     <a href="index.html"><img class="logo-desk" src="" alt="logo"></a>
@@ -10,6 +10,6 @@ const header = () => {
     <li><a href="#">Movies(<span id = "counter"></span>)</a></li>
   </ul>
   `;
-}
+};
 
-export default header
+export default header;
