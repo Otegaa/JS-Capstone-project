@@ -13,20 +13,31 @@ main {
 .desktop-nav {
   display: flex;
   background-color: slategray;
-  height: 50px;
+  height: 70px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.logo-desk {
+  width: 50px;
+  height: 50px;
 }
 
 .menu {
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 30px;
 }
 
 .menu li {
   list-style: none;
+}
+
+.desktop-nav li:hover {
+  text-decoration: underline;
+  color: aliceblue;
 }
 
 a {
@@ -44,7 +55,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid;
+  border: 1px solid lawngreen;
   min-height: 300px;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.8);
 }
@@ -90,4 +101,12 @@ footer {
   height: 70px;
   padding: 10px;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .display-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
