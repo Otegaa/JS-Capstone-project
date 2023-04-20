@@ -1,6 +1,6 @@
 import { postLikes, getLikesCount } from './involvement.js';
 
-const movies = 'https://api.tvmaze.com/shows';
+export const movies = 'https://api.tvmaze.com/shows';
 
 const getMovies = async (test) => {
   try {
@@ -29,7 +29,9 @@ const getMovies = async (test) => {
       const likesData = await getLikesCount();
       likesData.forEach((item) => {
         const likesCount = [`${item.likes}`];
-        const likesCountElement = document.getElementById(`likesCount-${item.item_id}`);
+        const likesCountElement = document.getElementById(
+          `likesCount-${item.item_id}`
+        );
         if (likesCountElement) likesCountElement.innerText = likesCount || '0';
       });
     };

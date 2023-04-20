@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-const likesApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/tPvCsAcB2y12v6uIfsLz/likes';
+const likesApi =
+  'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/tPvCsAcB2y12v6uIfsLz/likes';
 
 const postLikes = async (id) => {
   const test = { item_id: id };
