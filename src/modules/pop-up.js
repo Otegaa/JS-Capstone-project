@@ -81,6 +81,7 @@ const submitComment = () => {
     await postComments(targetId);
     const comment = await getComments(Number(targetId));
     displayComment(comment);
+    target.reset();
   });
 };
 

@@ -1,8 +1,8 @@
-const movieCounter = (count) => {
+const movieCounters = () => {
+  const movies = document.querySelectorAll('.card');
   const counter = document.getElementById('counter');
-  counter.innerText = count;
-  return count;
+  counter.innerText = movies.length;
+  return movies.length;
 };
 
-/* eslint-disable import/prefer-default-export */
-export { movieCounter };
+export default movieCounters;

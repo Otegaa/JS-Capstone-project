@@ -1,8 +1,8 @@
 const commentApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/tPvCsAcB2y12v6uIfsLz/comments';
 
 const postComments = async (id) => {
-  let username = document.getElementById('popup-name').value;
-  let comment = document.getElementById('popup-insight').value;
+  const username = document.getElementById('popup-name').value;
+  const comment = document.getElementById('popup-insight').value;
 
   const options = {
     method: 'POST',
@@ -17,9 +17,6 @@ const postComments = async (id) => {
   };
 
   await fetch(commentApi, options).then((res) => res.text());
-
-  username = '';
-  comment = '';
 };
 
 const getComments = async (id) => {

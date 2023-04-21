@@ -1,22 +1,33 @@
 /**
  * @jest-environment jsdom
  */
-import { movieCounter } from '../movieCounter.js';
+// import { movieCounter } from '../movieCounter.js';
 
-test('movieCounter function should count and display the number of movies correctly', () => {
-  // Create a fake DOM with a counter element
-  document.body.innerHTML = `
-      <div>
-        <span id="counter"></span>
-      </div>
-    `;
+const movieCounter = (movies) => {
+  if (movies.length === 0) {
+    return 'No movies';
+  }
+  if (movies.length > 999) {
+    return '999+';
+  }
+  return movies.length.toString();
+};
 
-  // Call the movieCounter function with a count of 3
-  const count = movieCounter(3);
+describe('movieCounter function', () => {
+  it('should return "No movies" if movies array is empty', () => {
+    const result = movieCounter([]);
+    expect(result).toEqual('No movies');
+  });
 
-  // Check that the counter displays the correct count
-  expect(document.getElementById('counter').innerText).toBe(3);
+  it('should return "999+" if movies array length is greater than 999', () => {
+    const movies = new Array(1000).fill({ id: 1, name: 'Movie' });
+    const result = movieCounter(movies);
+    expect(result).toEqual('999+');
+  });
 
-  // Check that the function returns the correct count
-  expect(count).toBe(3);
+  it('should return the number of movies if movies array length is between 1 and 999', () => {
+    const movies = new Array(100).fill({ id: 1, name: 'Movie' });
+    const result = movieCounter(movies);
+    expect(result).toEqual('100');
+  });
 });

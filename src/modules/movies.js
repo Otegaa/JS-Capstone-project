@@ -1,8 +1,9 @@
 import { postLikes, getLikesCount } from './involvement.js';
+import movieCounters from './movieCounter.js';
 
 export const movies = 'https://api.tvmaze.com/shows';
 
-const getMovies = async (test) => {
+const getMovies = async () => {
   try {
     const result = await fetch(movies);
     let output = '';
@@ -21,8 +22,10 @@ const getMovies = async (test) => {
 
     const displayMovies = document.querySelector('.display-container');
     displayMovies.innerHTML = output;
+
+    movieCounters(data);
     // passed in test above in order to be able to get length of all movies available
-    test(data.length);
+    // test(data.length);
 
     // update likes counter and display on DOM
     const updateLikesCount = async () => {
@@ -55,4 +58,4 @@ const getMovies = async (test) => {
 };
 
 /* eslint-disable import/prefer-default-export */
-export { getMovies };
+export default getMovies;
