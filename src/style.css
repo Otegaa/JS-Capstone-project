@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 20px;
+  list-style: none;
+}
+
+main {
+  padding: 10px;
+}
+
+.desktop-nav {
+  display: flex;
+  background-color: slategray;
+  height: 70px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.logo-desk {
+  width: 50px;
+  height: 50px;
+}
+
+.menu {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.desktop-nav li:hover {
+  text-decoration: underline;
+  color: aliceblue;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.display-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid lawngreen;
+  min-height: 300px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.8);
+}
+
+.movie-name {
+  display: flex;
+  gap: 20px;
+  align-self: center;
+}
+
+.like {
+  border: none;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.like:active {
+  color: red;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.comments-button {
+  background-color: blue;
+  width: 150px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  background-color: slategray;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 70px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .display-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* For the pop-up */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.popup-container {
+  position: absolute;
+  top: 0;
+  margin: 0 1.4rem;
+  padding: 20px 30px 20px;
+  z-index: 10;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+}
+
+.hide {
+  display: none;
+}
+
+.close-btn {
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-self: end;
+}
+
+.popup-img-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 10px;
+}
+
+.popup-title {
+  text-align: center;
+  padding: 10px;
+}
+
+.popup-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.popup-description {
+  padding: 10px;
+  text-align: justify;
+}
+
+.popup-comments {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.popup-btn {
+  cursor: pointer;
+}
