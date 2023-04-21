@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-// import { movieCounter } from '../movieCounter.js';
 
 const movieCounter = (movies) => {
   if (movies.length === 0) {
