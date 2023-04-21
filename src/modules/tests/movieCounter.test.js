@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { movieCounter } from '../movieCounter.js';
 
 test('movieCounter function should count and display the number of movies correctly', () => {
@@ -12,7 +15,7 @@ test('movieCounter function should count and display the number of movies correc
   const count = movieCounter(3);
 
   // Check that the counter displays the correct count
-  expect(document.getElementById('counter').innerText).toBe('3');
+  expect(document.getElementById('counter').innerText).toBe(3);
 
   // Check that the function returns the correct count
   expect(count).toBe(3);
