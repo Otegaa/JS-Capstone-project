@@ -30,7 +30,7 @@ const getMovies = async (test) => {
       likesData.forEach((item) => {
         const likesCount = [`${item.likes}`];
         const likesCountElement = document.getElementById(
-          `likesCount-${item.item_id}`
+          `likesCount-${item.item_id}`,
         );
         if (likesCountElement) likesCountElement.innerText = likesCount || '0';
       });

@@ -1,4 +1,6 @@
 import { movies } from './movies.js';
+import { postComments, getComments } from './tests/commentInvolvement.js';
+import counter from './counter.js';
 
 const popUpSection = document.querySelector('.popup-section');
 
@@ -11,10 +13,10 @@ const popUp = async () => {
     btn.addEventListener('click', () => {
       popUpSection.innerHTML = `
   <div class="overlay">
-    <div class="popup-container">
+    <div class="popup-container" id = ${data[i].id}>
      <span class="close-btn">&times;</span>
        <div class="popup-img-container">
-          <img src=${data[i].image.medium} alt=${data[i].name} class="popup-img" />
+          <img src=${data[i].image.medium} alt=${data[i].name} class="popup-img" id = ${data[i].id} />
         </div>
         <h3 class="popup-title">${data[i].name}</h3>
         <div class="popup-info">
@@ -27,21 +29,21 @@ const popUp = async () => {
           <p class="popup-summary">${data[i].summary}</p>
        </div>
         <div class="popup-comments">
+        <h3>Comments (<span class="comment-count"></span>) </h3>
           <ul class="comments-list">
-
           </ul>
         </div>
         <form class="form">
           <input
-            type="text"
+            type="text" 
             name="fname"
-            class="popup-name"
+            id="popup-name"
             placeholder="Your name"
             required
           />
-        <textarea name="insights" cols="30" rows="10" class="popup-insight" placeholder="Your insights"></textarea>
+        <textarea name="insights" cols="30" rows="5" id="popup-insight" placeholder="Your insights" required></textarea>
+        <button type= "submit" class="popup-btn" id = ${data[i].id}>Comment</button>
         </form>
-
     </div>
   </div>
     `;
@@ -49,17 +51,45 @@ const popUp = async () => {
   });
 };
 
-document.addEventListener('click', (e) => {
-  const target = e.target.closest('.close-btn');
-  const section = e.target.parentElement.parentElement;
-  if (!target) return;
-  section.classList.add('hide');
+const closeBtn = () => {
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('.close-btn');
+    const section = e.target.parentElement.parentElement;
+    if (!target) return;
+    section.classList.add('hide');
+  });
+};
+
+const displayComment = (comment) => {
+  const commentContainer = document.querySelector('.comments-list');
+  if (!comment.error) {
+    commentContainer.innerHTML = comment.map(
+      (item) => `<li> ${item.creation_date}: ${item.username}: ${item.comment} </li>`,
+    );
+  }
+  const allComments = document.querySelectorAll('.comments-list li');
+  const commentCount = document.querySelector('.comment-count');
+  commentCount.innerHTML = counter(allComments);
+};
+
+const submitComment = () => {
+  document.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const target = e.target.closest('.form');
+    const targetId = Number(e.target.parentElement.id);
+    if (!target) return;
+    await postComments(targetId);
+    const comment = await getComments(Number(targetId));
+    displayComment(comment);
+  });
+};
+
+const cardContainer = document.querySelector('.display-container');
+cardContainer.addEventListener('click', async (e) => {
+  if (e.target.className === 'comments-button') {
+    const comment = await getComments(Number(e.target.id));
+    displayComment(comment);
+  }
 });
 
-// const submitComment = async () => {
-//   const form = document.querySelector('.popup-name');
-//   console.log(form);
-// };
-
-// submitComment();
-export default popUp;
+export { popUp, closeBtn, submitComment };
